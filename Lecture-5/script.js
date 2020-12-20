@@ -1,6 +1,5 @@
 console.log('hhh');
-var blah = document.getElementById("button");
-blah.setAttribute("onclick", list);
+
 function list() {
   var ul = document.getElementById("listArea");
   var message = document.getElementById("input").value;
@@ -44,6 +43,8 @@ function list() {
   ul.appendChild(li);
   document.getElementById("input").value = "";
 }
+const blah = document.getElementById("button");
+blah.setAttribute("onclick", list);
 
 var d = new Date();
 var date = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
