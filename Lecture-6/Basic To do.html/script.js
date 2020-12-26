@@ -2,7 +2,12 @@ const list = document.getElementById("list");
 const newTask = document.getElementById("newTaskInput");
 const btnNewTask = document.getElementById("btnAddTask");
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todolist"));
+if( todos === null ) {
+    todos = [];
+}
+showTodos();
+
 
 btnNewTask.addEventListener('click', addNewTodoToArray);
 
@@ -23,6 +28,7 @@ function addNewTodoToArray() {
 
 // This function will show all the todos present in the array on the webpage
 function showTodos() {
+    localStorage.setItem("todolist", JSON.stringify(todos));
     list.innerHTML = '';
     for(let i = 0; i < todos.length ; i++) {
         // Add each todo item to list
@@ -92,10 +98,9 @@ function deleteItem(event){
 
 function itemUp(event){
     const upIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
-    if(upIndex !== 0){
-        swap(upIndex, upIndex -1);
-    console.log(upIndex);
-    showTodos();
+    if(upIndex !== 0) {
+        swap(upIndex, upIndex - 1);
+        showTodos();
     }
 }
 
