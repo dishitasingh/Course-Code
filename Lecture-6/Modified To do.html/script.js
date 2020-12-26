@@ -1,3 +1,4 @@
+console.log("hey")
 const list = document.getElementById("list");
 const newTask = document.getElementById("newTaskInput");
 const btnNewTask = document.getElementById("btnAddTask");
@@ -37,9 +38,11 @@ function addTodoToList(todoItem, todoId) {
 
     const span = document.createElement("span");
     span.innerText = todoItem.task;
+    span.setAttribute("class", "checkSpan");
 
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("id", "myBox");
     checkbox.onclick = toggleCheckbox;
 
     const delBtn = document.createElement("button");
@@ -96,8 +99,6 @@ function itemUp(event){
     console.log(upIndex);
     showTodos();
     }
-    
-
 }
 
 function itemDown(event){
