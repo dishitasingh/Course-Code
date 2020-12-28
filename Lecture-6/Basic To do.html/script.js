@@ -43,7 +43,7 @@ function addTodoToList(todoItem, todoId) {
     li.setAttribute("class", "list-group-item");
     li.style.transition = " all 6s";
     li.style.fontFamily = "Helvetica";
-    li.style.fontSize = "20px";    
+    li.style.fontSize = "15px";    
 
     const span = document.createElement("span");
     span.innerText = todoItem.task;
