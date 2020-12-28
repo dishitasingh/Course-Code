@@ -1,3 +1,118 @@
+body{
+  background-image:linear-gradient(#7efff5,#67e6dc);
+  background-size: 100%;
+  min-height: 100vh;
+}
+
 li >  span{
     color: red;
 }
+
+input[type='checkbox']:checked{
+  background-color: chartreuse;;
+}
+
+li:hover{
+  background-color: azure;
+}
+.card{
+    margin: 40px auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+}
+
+
+#newTaskInput:focus::placeholder {
+    color: transparent;
+  }
+
+  #newTaskInput::before{
+content: '\f067';
+  }
+
+  #newTaskInput:focus::-webkit-#newTaskInput-placeholder { color:transparent; }
+#newTaskInput:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+#newTaskInput:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+#newTaskInput:focus:-ms-#newTaskInput-placeholder { color:transparent; } /* IE 10+ */
+#newTaskInput{
+  width: 92%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #ecf0f3;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  margin: 10px auto;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #newTaskInput {
+      transition: none;
+    }
+  }
+  
+  #newTaskInput::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+  
+  #newTaskInput:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #495057;
+  }
+  
+  #newTaskInput:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+  }
+  
+  #newTaskInput::-webkit-#newTaskInput-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  #newTaskInput::-moz-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  #newTaskInput:-ms-#newTaskInput-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  #newTaskInput::-ms-#newTaskInput-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  #newTaskInput::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  #newTaskInput:disabled, #newTaskInput[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  
+  #newTaskInput[type="date"]#newTaskInput,
+  #newTaskInput[type="time"]#newTaskInput,
+  #newTaskInput[type="datetime-local"]#newTaskInput,
+  #newTaskInput[type="month"]#newTaskInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  select#newTaskInput:focus::-ms-value {
+    color: #495057;
+    background-color: #fff;
+  }
