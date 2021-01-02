@@ -12,6 +12,10 @@ input[type='checkbox']:checked{
   background-color: chartreuse;;
 }
 
+.todayHead{
+  display: none;
+}
+
 li:hover{
   background-color: azure;
 }

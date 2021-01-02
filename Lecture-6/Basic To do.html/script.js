@@ -1,8 +1,11 @@
 const list = document.getElementById("list");
 const newTask = document.getElementById("newTaskInput");
 const btnNewTask = document.getElementById("btnAddTask");
+const tomLi = document.getElementById("list2");
+const heading = document.getElementsByClassName("todayHead");
 
 let todos = JSON.parse(localStorage.getItem("todolist"));
+
 if( todos === null ) {
     todos = [];
 }
@@ -28,6 +31,7 @@ function addNewTodoToArray() {
 // This function will show all the todos present in the array on the webpage
 function refreshTodos() {
     localStorage.setItem("todolist", JSON.stringify(todos));
+    localStorage.getItem("todolistTom");
     list.innerHTML = '';
     for(let i = 0; i < todos.length ; i++) {
         // Add each todo item to list
@@ -43,7 +47,9 @@ function addTodoToList(todoItem, todoId) {
     li.setAttribute("class", "list-group-item");
     li.style.transition = " all 6s";
     li.style.fontFamily = "Helvetica";
-    li.style.fontSize = "15px";    
+    li.style.fontSize = "15px";  
+    li.style.backgroundColor = '#fad390';
+    li.style.borderRadius = "4px";  
 
     const span = document.createElement("span");
     span.innerText = todoItem.task;
@@ -77,6 +83,11 @@ function addTodoToList(todoItem, todoId) {
     downBtn.setAttribute("class","btn btn-secondary");
     downBtn.onclick = moveTodoDown;
 
+    const tomBtn = document.createElement("button");
+    tomBtn.innerHTML = "<i class='fas fa-calendar-check'></i>";
+    tomBtn.setAttribute("class","btn btn-secondary");
+    tomBtn.onclick = assignTom;
+
     if(todoItem.done) {
         checkbox.setAttribute('checked', true);
         span.style.textDecoration = 'line-through';
@@ -96,6 +107,7 @@ function addTodoToList(todoItem, todoId) {
         buttonGroup.appendChild(downBtn);
     }
     buttonGroup.appendChild(delBtn);
+    buttonGroup.appendChild(tomBtn);
 
     list.appendChild(li);
     
@@ -131,7 +143,6 @@ function moveTodoUp(event) {
     }
 }
 
-
 function moveTodoDown(event) {
     const downIndex = parseInt(event.target.parentElement.parentElement.parentElement.getAttribute('todo-id'));
     console.log(downIndex);
@@ -139,6 +150,14 @@ function moveTodoDown(event) {
         swap(downIndex, downIndex + 1);
         refreshTodos();
     }
+}
+
+function assignTom(){
+    check = this.parentElement.parentElement;
+    check.remove();
+    tomLi.appendChild(check);
+    heading.style.display = "block";
+    console.log(check);
 }
 
 function swap(index1, index2){
@@ -157,13 +176,13 @@ function swap(index1, index2){
     answer.addEventListener("mouseout", myThirdFunction);
     
     function myFunction() {
-      document.getElementById("quote1").innerHTML = "Just Do It"
+      document.getElementById("quote1").innerHTML = "'Just Do It'"
     }
     
     function mySecondFunction() {
-      document.getElementById("quote1").innerHTML = "Your only Limit is YoU"
+      document.getElementById("quote1").innerHTML = "'Your only Limit is YoU'"
     }
     
     function myThirdFunction() {
-      document.getElementById("quote1").innerHTML = "Today you Will"
+      document.getElementById("quote1").innerHTML = "'Today you Will'"
     }
