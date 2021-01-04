@@ -3,7 +3,11 @@ const list = document.getElementById("list");
 const newTask = document.getElementById("newTaskInput");
 const btnNewTask = document.getElementById("btnAddTask");
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todolist"));
+if( todos === null ) {
+    todos = [];
+}
+showTodos();
 
 btnNewTask.addEventListener('click', addNewTodoToArray);
 
@@ -24,6 +28,7 @@ function addNewTodoToArray() {
 
 // This function will show all the todos present in the array on the webpage
 function showTodos() {
+    localStorage.setItem("todolist", JSON.stringify(todos));
     list.innerHTML = '';
     for(let i = 0; i < todos.length ; i++) {
         // Add each todo item to list
@@ -35,26 +40,36 @@ function showTodos() {
 function addTodoToList(todoItem, todoId) {
     const li = document.createElement("li");
     li.setAttribute('todo-id', todoId);
+    li.className = 'list-group-item';
 
     const span = document.createElement("span");
     span.innerText = todoItem.task;
-    span.setAttribute("class", "checkSpan");
+    span.className = 'col-2'
 
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("id", "myBox");
+    checkbox.className = 'col-1';
     checkbox.onclick = toggleCheckbox;
 
-    const delBtn = document.createElement("button");
-    delBtn.innerText = "x";
-    delBtn.onclick = deleteItem;
+    const dltIcon = document.createElement("i");
+    dltIcon.className = 'fa fa-trash';
+    const dltBtn = document.createElement('button');
+    dltBtn.className = "btn btn-link col-1 red-color";
+    dltBtn.appendChild(dltIcon);
+    dltBtn.onclick = deleteItem;
 
+    const upIcon = document.createElement("i");
+    upIcon.className =  'fa fa-chevron-up';
     const upBtn = document.createElement("button");
-    upBtn.innerHTML = "^";
+    upBtn.className = 'btn btn-link col-1';
+    upBtn.appendChild(upIcon);
     upBtn.onclick = itemUp;
 
+    const downIcon = document.createElement("i");
+    downIcon.className =  'fa fa-chevron-down';
     const downBtn = document.createElement("button");
-    downBtn.innerHTML = "v";
+    downBtn.className = 'btn btn-link col-1';
+    downBtn.appendChild(downIcon);
     downBtn.onclick = itemDown;
 
     if(todoItem.done) {
@@ -66,10 +81,18 @@ function addTodoToList(todoItem, todoId) {
     list.appendChild(li);
     li.appendChild(checkbox);
     li.appendChild(span);
-    li.appendChild(delBtn);
-    li.appendChild(upBtn);
-    li.appendChild(downBtn);
+    li.appendChild(dltBtn);
+    if(todoId !==  0) {
+        li.appendChild(upBtn);
+    }
+    if(todoId !== todos.length - 1) {
+        li.appendChild(downBtn);
+    }
+    li.appendChild(dltBtn);
+
+    list.appendChild(li);
 }
+
 
 
 function toggleCheckbox(event){
@@ -80,7 +103,10 @@ function toggleCheckbox(event){
 }
 
 function deleteItem(event){
-    const deleteIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    let deleteIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    if(Number.isNaN(deleteIndex)){
+        deleteIndex = parseInt(event.target.parentElement.parentElement.getAttribute('todo-id'))
+    }
     console.log(deleteIndex);
     const newTodos = [];
     for(let i = 0; i < todos.length; i++){
@@ -93,7 +119,10 @@ function deleteItem(event){
 }
 
 function itemUp(event){
-    const upIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    let upIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    if(Number.isNaN(upIndex)){
+        upIndex = parseInt(event.target.parentElement.parentElement.getAttribute('todo-id'))
+    }
     if(upIndex !== 0){
         swap(upIndex, upIndex -1);
     console.log(upIndex);
@@ -102,10 +131,12 @@ function itemUp(event){
 }
 
 function itemDown(event){
-    const downIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    let downIndex = parseInt(event.target.parentElement.getAttribute('todo-id'));
+    if(Number.isNaN(downIndex)){
+        downIndex = parseInt(event.target.parentElement.parentElement.getAttribute('todo-id'))
+    }
     if(downIndex !== todos.length-1){
         swap(downIndex, downIndex +1);
-    console.log(downIndex);
     showTodos();
     }
     

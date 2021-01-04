@@ -3,12 +3,16 @@ console.log("heloop")
 var input = document.getElementById("box");
 var submit = document.getElementById("sub");
 var list = document.getElementById("list");
+var here = document.getElementById("main");
 
 submit.addEventListener('click', function(){
     var value = input.value ;
-    value= parseInt(value);
     console.log(value);
     printFizzBuzz(value)
+    if(typeof value === "string"){
+      here.innerHTML= "Please type a number";
+    }
+    input.value = "";
 })
 
 function printFizzBuzz(n){
