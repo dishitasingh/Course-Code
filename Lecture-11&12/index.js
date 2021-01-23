@@ -151,3 +151,5 @@ function swap(index1, index2){
     todos[index2] = todoIndex1;
 
 }
+
+console.log(todos)
