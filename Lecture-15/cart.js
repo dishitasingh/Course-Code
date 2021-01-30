@@ -27,6 +27,7 @@ function displayCart(index) {
 
               const addTd = document.createElement("td");
               const addBtn = document.createElement("button");
+              addBtn.onclick = addQuantity();
               const addIcon = document.createElement("i");
 
               addTd.appendChild(addBtn);
@@ -46,7 +47,7 @@ function displayCart(index) {
 
               const productQuantity = document.createElement("td");
               productQuantity.innerText = cart[products[index].id];
-              productAmount.innerText = products[index].price * cart[products[index].id];
+
 
 
               cartContainer.append(productList);
@@ -58,6 +59,7 @@ function displayCart(index) {
               productList.appendChild(addTd);
        }
 }
+
        function refreshTodos(){
               cartContainer.innerHTML = "";
        for (let i = 0; i < Object.keys(cart).length; i++) {
