@@ -35,7 +35,6 @@ function showQuestion(question) {
         selector.style.height = "1em";
         selector.setAttribute("name", "age");
         console.log(question);
-        selector.onclick = nowCheck;
       
         const label = document.createElement("label");
         label.innerText = questions[0].answers[i].Option;
@@ -57,22 +56,6 @@ function chooseAns() {
 
 }
 
-function nowCheck() {
-    // Get all the child elements inside the DIV.
-    for(let i = 0; i<5; i++){
-    var cont = document.getElementById("question-box").querySelectorAll(".options");  
-    console.log(cont.item)
-    console.log(cont);
-    for (var i = 0; i < cont.length; i++) {
-        // Check if the element is a checkbox.
-        if (cont[i].tagName == 'INPUT' && cont[i].type == 'checkbox') {
-            // Finally, check if the checkbox is checked.
-            if (cont[i].checked) {
-                alert(cont[i].value + ' is checked!');
-            }
-        }
-    }}
-}
 
 const questions = [
     {

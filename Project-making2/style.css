@@ -12,8 +12,8 @@
 
 .inner-div{
     width:40vw;
-    background-color: #fff;
-    padding: 30px 80px; 
+    background-color: rgb(135, 241, 162);
+    padding: 30px 30px; 
     border-radius: 10px;
     box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.4);
 }
@@ -23,10 +23,16 @@
 }
 
 .inner-div li{
-    margin-top: 1.5rem;
+    margin-top: 5px;
     font-size: medium;
+    padding: 4px;
 }
+.inner-div li:hover{
+    background-color: rgb(236, 214, 17);
+    transition: 0.3s;
+    border-radius: 4px;
 
+}
 input{
     cursor: pointer;
 }

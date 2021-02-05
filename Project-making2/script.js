@@ -43,7 +43,7 @@ const option3 = document.querySelector("#option3");
 const option4 = document.querySelector("#option4");
 const submit = document.querySelector("#submit");
 const answers = document.querySelectorAll(".answer");
-var scoreBox = document.querySelectorAll("#showScore");
+var scoreBox = document.querySelector("#showScore");
 
 let questionCount = 0;
 
@@ -63,25 +63,30 @@ function makeQuestion() {
 makeQuestion();
 const getCheckAnswer = () => {
     let answer;
+    let answerId;
 
     answers.forEach((currentAnswerElement) => {
-        if (currentAnswerElement.checked) {
+        if (currentAnswerElement.checked)  {
             answer = currentAnswerElement.parentElement.innerText;
+            answerId = currentAnswerElement.parentElement;
         }
+        console.log(currentAnswerElement.parentElement.innerText)
     });
     return answer;
 }
 
 submit.addEventListener("click", function submit() {
     const checkedAnswer = getCheckAnswer();
+    console.log(checkedAnswer);
+    console.log(scoreBox.innerHTML);
     if (checkedAnswer == questionSet[questionCount].a) {
         scoreBox.innerText = questionSet[questionCount].text_a;
         console.log(questionSet[questionCount].text_a);
     } else if (checkedAnswer == questionSet[questionCount].b) {
-        scoreBox.innerText = questionSet[questionCount].text_b;
+        scoreBox.innerHTML = questionSet[questionCount].text_b;
         console.log(questionSet[questionCount].text_b);
     } else if (checkedAnswer == questionSet[questionCount].c) {
-        scoreBox.innerText = questionSet[questionCount].text_c;
+        scoreBox.innerHTML = questionSet[questionCount].text_c;
         console.log(questionSet[questionCount].text_c);
     } else if (checkedAnswer == questionSet[questionCount].d) {
         document.getElementById("showScore").innerText = questionSet[questionCount].text_d;
@@ -93,7 +98,7 @@ submit.addEventListener("click", function submit() {
         makeQuestion();
     }
     else {
-        scoreBox.classList.remove("scoreArea")
+        scoreBox.classList.remove("scoreArea");
     }
 
 });
