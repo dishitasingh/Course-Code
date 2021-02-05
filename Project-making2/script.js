@@ -75,6 +75,10 @@ const getCheckAnswer = () => {
     return answer;
 }
 
+const deselectAll = () =>{
+    answers.forEach((currentAnswerElement) => currentAnswerElement.checked = false );
+}
+
 submit.addEventListener("click", function submit() {
     const checkedAnswer = getCheckAnswer();
     console.log(checkedAnswer);
@@ -92,6 +96,8 @@ submit.addEventListener("click", function submit() {
         document.getElementById("showScore").innerText = questionSet[questionCount].text_d;
         console.log(questionSet[questionCount].text_d);
     }
+
+    deselectAll();
 
     questionCount++;
     if (questionCount < questionSet.length) {
