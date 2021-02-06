@@ -27,7 +27,7 @@ function displayCart(index) {
 
               const addTd = document.createElement("td");
               const addBtn = document.createElement("button");
-              addBtn.onclick = addQuantity();
+          
               const addIcon = document.createElement("i");
 
               addTd.appendChild(addBtn);
