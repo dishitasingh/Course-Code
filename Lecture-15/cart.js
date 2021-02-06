@@ -11,7 +11,7 @@ for (key in cart) {
 }
 
 console.log(products);
-
+let prodQuanValue;
 //
 function displayCart(index) {
        if (cart.hasOwnProperty(products[index].id)) {
@@ -35,6 +35,7 @@ function displayCart(index) {
               addIcon.className = "fas fa-plus";
 
               addBtn.className = 'btn btn-link col-1';
+              addBtn.onclick = addQuantity;
               addBtn.style.width = "150px";
               addBtn.style.padding = "10px";
               addBtn.appendChild(addIcon);
@@ -46,7 +47,9 @@ function displayCart(index) {
               productAmount.innerText = products[index].price * cart[products[index].id];
 
               const productQuantity = document.createElement("td");
-              productQuantity.innerText = cart[products[index].id];
+              prodQuanValue = cart[products[index].id];
+              console.log(prodQuanValue)
+              productQuantity.innerText = prodQuanValue;
 
 
 
@@ -68,6 +71,12 @@ function displayCart(index) {
 var sumVal = 0;
 for (var i = 0; i < cartContainer.rows.length; i++) {
        sumVal = sumVal + parseInt(cartContainer.rows[i].cells[4].innerHTML);
+}
+
+function addQuantity(event){
+       const val = event.target.
+       prodQuanValue++;
+       console.log(prodQuanValue);
 }
 
 total.innerText = sumVal;
