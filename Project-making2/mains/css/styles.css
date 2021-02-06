@@ -10166,32 +10166,32 @@ body {
     color: rgba(255, 255, 255, 0.5);
   }
   #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgb(243, 21, 106);;
   }
   #mainNav .nav-link:active {
-    color: #fff;
+    color: rgb(243, 21, 106);;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color:rgb(182, 240, 74);
   }
   #mainNav.navbar-shrink .navbar-brand {
-    color: #000000;
+    color: rgb(243, 21, 106);;
   }
   #mainNav.navbar-shrink .nav-link {
-    color: #000000;
+    color: rgb(243, 21, 106);
     padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #64a19d;
+    color: rgb(243, 21, 106)
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: rgb(243, 21, 106);
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
+    color: rgb(243, 21, 106);
     outline: none;
-    border-bottom: 0.25rem solid #64a19d;
+    border-bottom: 0.25rem solid rgb(243, 21, 106);
   }
 }
 
