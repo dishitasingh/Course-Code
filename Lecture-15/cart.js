@@ -51,10 +51,15 @@ function displayCart(index) {
               console.log(prodQuanValue)
               productQuantity.innerText = prodQuanValue;
               function addQuantity(){
-                     cart[key]++;
+                     cart[products[index].id]++;
+                     saveCart();
                      refreshTodos();
                      
               }
+
+              function saveCart() {
+                     localStorage.setItem("cart", JSON.stringify(cart));
+                 }
 
 
               cartContainer.append(productList);
