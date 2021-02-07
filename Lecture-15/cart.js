@@ -51,8 +51,8 @@ function displayCart(index) {
               console.log(prodQuanValue)
               productQuantity.innerText = prodQuanValue;
               function addQuantity(){
-                     console.log(cart[key])
-                     console.log("hey")
+                     cart[key]++;
+                     refreshTodos();
                      
               }
 

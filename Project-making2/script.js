@@ -4,11 +4,12 @@ const questionSet = [{
     a: "an Indian, or",
     b: "Non- Resident Indians (NRI)",
     text_a: "That's great your nationaliy makes you fit for India's own Covid vaccine. (2️⃣5️⃣% fit)",
-    text_b: "Hmmm, it seems like you may not be fit for India's own Covid vaccine."
+    text_b: "Hmmm, it seems like you may not be fit for India's own Covid vaccine.",
+    ans: "ans1"
 }, {
     question: "What is your position?",
-    a: "You are a Covid Warrior / Frontline Worker.",
-    b: "Your age is above 65 years of age.",
+    a: "Your age is above 65 years of age.",
+    b: "You are a Covid Warrior / Frontline Worker.",
     c: "You are from 50-65 years of age.",
     d: "Your age is below 50 years.",
     e: "Any other.",
@@ -16,7 +17,8 @@ const questionSet = [{
     text_b: "You maybe the second Group to recieve the vaccine.",
     text_c: "You maybe the third Group to recieve the vaccine.",
     text_d: "You maybe the fourth Group to recieve the vaccine.",
-    text_e: "It maybe possible that you may get vaccinated after sometime in future."
+    text_e: "It maybe possible that you may get vaccinated after sometime in future.",
+    ans: "ans2"
 }, {
     question: "Are you suffering from any of these ?",
     a: "You have any history of allergies.",
@@ -28,19 +30,21 @@ const questionSet = [{
     text_b: "Existing sickness, or at a time of sickness, when the immune system is already busy fighting out the virus would mean that there would be risks for the vaccine to work well, making many wonder if getting a COVID vaccine would be safe or not.",
     text_c: "At least 17 per cent of Indians aged between 30 and 69 years cannot be given Bharat Biotech’s Covid-19 vaccine Covaxin, because it is contraindicated for people who use blood thinners — drugs that impede blood coagulation, both within blood vessels and in case of bleeding.",
     text_d: "Not to forget, suffering from respiratory symptoms like cough, a fever could be doubly dangerous right now, since they are possible COVID symptoms as well.",
-    text_e: "It seems that your health condition is favourable for a covid vaccination. (7️⃣5️⃣% fit)."
+    text_e: "It seems that your health condition is favourable for a covid vaccination. (7️⃣5️⃣% fit).",
+    ans: "ans5"
 }, {
     question: "Are you suffering from any of these ?",
     a: "You have any other serious health related issues, as determined by the Vaccinator/Officer supervising vaccination",
     b: "You are breastfeeding",
-    c: "You have received another COVID-19 vaccine",
+    c: "You are not under any of these circumstances.",
     d: "You are pregnant.",
-    e: "You are not under any of these circumstances.",
+    e: "You have received another COVID-19 vaccine",
     text_a: "If you have any of these problems, you may not be fit for Covaxin and your vaccine date may be postponed.",
     text_b: "If you have any of these problems, you may not be fit for Covaxin and your vaccine date may be postponed.",
     text_c: "If you have any of these problems, you may not be fit for Covaxin and your vaccine date may be postponed.",
     text_d: "If you have any of these problems, you may not be fit for Covaxin and your vaccine date may be postponed.",
-    text_e: "Hurrray!! You are 💯% fit for a COVID Vaccine."
+    text_e: "Hurrray!! You are 💯% fit for a COVID Vaccine.",
+    ans: "ans3"
 }
 ]
 
@@ -82,10 +86,21 @@ const getCheckAnswer = () => {
     answers.forEach((currentAnswerElement) => {
         if (currentAnswerElement.checked) {
             answer = currentAnswerElement.nextElementSibling.innerText;
-            answerId = answer.innerText
         }
     });
     return answer;
+}
+
+const getCheckAnswerId = () => {
+    let answerId;
+
+    answers.forEach((currentAnswerElement) => {
+        if (currentAnswerElement.checked) {
+            answerId = currentAnswerElement.id;
+            console.log(answerId);
+        }
+    });
+    return answerId;
 }
 
 function deselectAll() {
@@ -94,25 +109,24 @@ function deselectAll() {
 
 submit.addEventListener("click", function submit() {
     const checkedAnswer = getCheckAnswer();
-    if (checkedAnswer == questionSet[questionCount].a) {
+    const checkedAnswerId = getCheckAnswerId();
+    if (checkedAnswer == questionSet[questionCount].a && checkedAnswerId == questionSet[questionCount].ans) {
         let text_for_a = document.createTextNode(questionSet[questionCount].text_a);
         const br = document.createElement("br");
         scoreBox.appendChild(text_for_a);
         scoreBox.append(br)
         console.log(text_for_a)
-    } else if (checkedAnswer == questionSet[questionCount].b) {
+    } else if (checkedAnswer == questionSet[questionCount].b && checkedAnswerId == questionSet[questionCount].ans) {
         let text_for_b = document.createTextNode(questionSet[questionCount].text_b);
         scoreBox.appendChild(text_for_b);
-        scoreBox.append(br)
-    } else if (checkedAnswer == questionSet[questionCount].c) {
+        console.log(checkedAnswerId, questionSet[questionCount].ans);
+    } else if (checkedAnswer == questionSet[questionCount].c && checkedAnswerId == questionSet[questionCount].ans) {
         let text_for_c = document.createTextNode(questionSet[questionCount].text_c);
         scoreBox.appendChild(text_for_c);
-        scoreBox.append(br)
-    } else if (checkedAnswer == questionSet[questionCount].d) {
+    } else if (checkedAnswer == questionSet[questionCount].d && checkedAnswerId == questionSet[questionCount].ans) {
         let text_for_d = document.createTextNode(questionSet[questionCount].text_d);
         scoreBox.appendChild(text_for_d);
-        scoreBox.append(br)
-    }else if (checkedAnswer == questionSet[questionCount].e) {
+    } else if (checkedAnswer == questionSet[questionCount].e && checkedAnswerId == questionSet[questionCount].ans) {
         let text_for_e = document.createTextNode(questionSet[questionCount].text_e);
         scoreBox.appendChild(text_for_e);
     }
