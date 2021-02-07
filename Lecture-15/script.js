@@ -2,7 +2,7 @@ let cart = {};
 if (localStorage.getItem("cart") != null) {
     cart = JSON.parse(localStorage.getItem("cart"));
 }
-
+console.log(cart);
 const productContainer = document.getElementById("products-container");
 
 function showProducts(index) {
@@ -36,16 +36,17 @@ function showProducts(index) {
             cart[productId] = 1;
         }
         console.log(cart);
-        saveCart();
+        
         refreshCatalogue();
     })
 
-
+    console.log(cart);
 
     let productQuantity = document.createElement("span");
     if (cart.hasOwnProperty(products[index].id)) {
         productQuantity.innerText = cart[products[index].id] + "in cart";
     }
+    saveCart();
 
 
     productContainer.appendChild(cardDiv);
@@ -68,3 +69,9 @@ function refreshCatalogue() {
     }
 }
 refreshCatalogue();
+for(key in cart){
+    console.log(cart);
+    console.log(key);
+    console.log(cart[key]);
+    console.log(cart[key]);
+}

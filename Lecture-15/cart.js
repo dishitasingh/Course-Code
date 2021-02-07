@@ -27,6 +27,7 @@ function displayCart(index) {
 
               const addTd = document.createElement("td");
               const addBtn = document.createElement("button");
+              addBtn.onclick = addQuantity;
           
               const addIcon = document.createElement("i");
 
@@ -35,7 +36,6 @@ function displayCart(index) {
               addIcon.className = "fas fa-plus";
 
               addBtn.className = 'btn btn-link col-1';
-              addBtn.onclick = addQuantity;
               addBtn.style.width = "150px";
               addBtn.style.padding = "10px";
               addBtn.appendChild(addIcon);
@@ -50,7 +50,11 @@ function displayCart(index) {
               prodQuanValue = cart[products[index].id];
               console.log(prodQuanValue)
               productQuantity.innerText = prodQuanValue;
-
+              function addQuantity(){
+                     console.log(cart[key])
+                     console.log("hey")
+                     
+              }
 
 
               cartContainer.append(productList);
@@ -73,11 +77,7 @@ for (var i = 0; i < cartContainer.rows.length; i++) {
        sumVal = sumVal + parseInt(cartContainer.rows[i].cells[4].innerHTML);
 }
 
-function addQuantity(event){
-       const val = event.target.
-       prodQuanValue++;
-       console.log(prodQuanValue);
-}
+
 
 total.innerText = sumVal;
 
